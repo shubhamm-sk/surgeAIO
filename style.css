@@ -1224,12 +1224,16 @@ section {
 .revenue-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;   /* CHANGE THIS */
+    align-items: center;
+    /* CHANGE THIS */
     gap: 100px;
     margin-bottom: 120px;
-    max-width: 1400px;     /* ADD */
-    margin-left: auto;     /* ADD */
-    margin-right: auto;    /* ADD */
+    max-width: 1400px;
+    /* ADD */
+    margin-left: auto;
+    /* ADD */
+    margin-right: auto;
+    /* ADD */
 }
 
 .revenue-title {
@@ -1237,7 +1241,8 @@ section {
     font-weight: 800;
     line-height: 0.95;
     letter-spacing: -2px;
-    color: #ffffff; /* force white */
+    color: #ffffff;
+    /* force white */
 }
 
 .blur-target-text {
@@ -1250,10 +1255,12 @@ section {
 
 /* Right Side (Image + 10X) */
 .revenue-right-head {
-    width: 480px;   /* increased from 420 */
+    width: 480px;
+    /* increased from 420 */
     display: flex;
     flex-direction: column;
-    align-items: center;   /* center internal content */
+    align-items: center;
+    /* center internal content */
     gap: 50px;
 }
 
@@ -1264,7 +1271,8 @@ section {
 .image-card {
     background: #0a0a0c;
     border-radius: 24px;
-    height: 340px;  /* was 280px */
+    height: 340px;
+    /* was 280px */
     width: 100%;
     overflow: hidden;
     box-shadow: 0 25px 70px rgba(0, 0, 0, 0.45);
@@ -1282,7 +1290,8 @@ section {
 
 .metric-10x {
     display: flex;
-    align-items: center;   /* instead of baseline */
+    align-items: center;
+    /* instead of baseline */
     justify-content: center;
     gap: 28px;
     text-align: left;
@@ -1308,6 +1317,7 @@ section {
     max-width: 280px;
     line-height: 1.3;
 }
+
 .metric-text {
     color: #ffffff;
     font-size: 15px;
@@ -1329,7 +1339,8 @@ section {
 
 .revenue-right {
     width: 100%;
-    max-width: 900px;   /* was 720px */
+    max-width: 900px;
+    /* was 720px */
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -1345,14 +1356,12 @@ section {
     display: flex;
     justify-content: space-between;
     overflow: hidden;
-    background: linear-gradient(
-        270deg,
-        #8C52FE,
-        #00E0FF,
-        #FF3CAC,
-        #784BA0,
-        #8C52FE
-    );
+    background: linear-gradient(270deg,
+            #8C52FE,
+            #00E0FF,
+            #FF3CAC,
+            #784BA0,
+            #8C52FE);
     background-size: 400% 400%;
     animation: gradientFlow 12s ease infinite;
 }
@@ -1361,9 +1370,11 @@ section {
     0% {
         background-position: 0% 50%;
     }
+
     50% {
         background-position: 100% 50%;
     }
+
     100% {
         background-position: 0% 50%;
     }
@@ -2629,6 +2640,7 @@ section {
     border: 1px solid rgba(255, 255, 255, 0.1);
     position: relative;
     overflow: hidden;
+    color: #000;
 }
 
 .nav-pill::before {
@@ -2661,7 +2673,7 @@ body::after {
 
 .nav-pill:hover {
     background: rgba(140, 82, 254, 0.15);
-    color: #fff;
+    color: #413e3e;
     transform: translateY(-3px);
 }
 
@@ -4285,6 +4297,10 @@ body {
 /* CONTAINER */
 /* ========================================= */
 
+/* ========================================= */
+/* CONTAINER */
+/* ========================================= */
+
 .four-cards-container {
     display: flex;
     gap: 32px;
@@ -4294,7 +4310,7 @@ body {
     margin: 0 auto;
     height: 100vh;
     width: 100%;
-     min-height: 100vh;   /* better than height */
+    min-height: 100vh;
     padding: 80px 40px;
     box-sizing: border-box;
 }
@@ -4305,7 +4321,8 @@ body {
 
 .four-card-wrapper {
     flex: 1 1 240px;
-    max-width: 280px;
+    /* Increased max-width for better visibility while fitting row */
+    max-width: 320px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -4321,86 +4338,152 @@ body {
 }
 
 /* ========================================= */
-/* IMAGE CARD */
+/* IMAGE CARD - REFINED VISIBILITY */
 /* ========================================= */
 
 .four-card {
-    width: 100%;
-    aspect-ratio: 1;
-    border-radius: 20px;
-    overflow: hidden;
     position: relative;
+    z-index: 5;
+    background: rgba(15, 15, 25, 0.45);
+    /* Slightly darker for contrast */
+    backdrop-filter: blur(14px);
+    /* Smoother blur */
+    padding: 14px;
+    /* Reduced padding to maximize image area */
+    border-radius: 20px;
     box-shadow:
-        0 20px 60px rgba(0, 0, 0, 0.6);
+        0 25px 60px rgba(0, 0, 0, .55),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    width: 100%;
+    /* Ensure fill */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    /* Prevent scale overflow */
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .four-card-img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+    height: auto;
+    object-fit: contain;
+    /* Scale up for prominence without layout change */
+    transform: scale(1.15);
+    transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Subtle hover effect */
+.four-card-wrapper:hover .four-card-img {
+    transform: scale(1.22);
 }
 
 /* ========================================= */
 /* BEAM */
 /* ========================================= */
-
 .card-beam {
     width: 3px;
     height: 60px;
+    margin: 10px 0 14px;
+
     background: linear-gradient(to bottom,
             rgba(140, 82, 254, 0),
-            #8C52FE,
+            #8c52fe,
             rgba(140, 82, 254, 0));
-    box-shadow: 0 0 20px rgba(140, 82, 254, 0.6);
-    margin: 24px 0;
 
-    transform-origin: top center;
-    transform: scaleY(0);
-    opacity: 0;
-    will-change: transform, opacity;
+    box-shadow: 0 0 18px rgba(140, 82, 254, .55);
+
+    transform-origin: top;
+    transform: scaleY(.2);
+    opacity: .35;
 }
 
 /* ========================================= */
-/* TEXT BELOW BEAM */
+/* TEXT BELOW BEAM - IMPROVED READABILITY */
 /* ========================================= */
 
 .four-card-content {
     text-align: center;
     color: #ffffff;
-    padding: 0 10px;
+    padding: 0 4px;
+    width: 100%;
+    margin-top: 10px;
 }
 
 .four-card-content h4 {
-    font-size: 20px;
-    font-weight: 600;
+    /* Fluid typography for heading */
+    font-size: clamp(20px, 1.5vw, 24px);
+    font-weight: 700;
     margin-bottom: 8px;
-    line-height: 1.3;
+    line-height: 1.2;
+    color: #ffffff;
+    letter-spacing: -0.01em;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
+
 
 .four-card-content p {
-    font-size: 14px;
-    color: rgba(255, 255, 255, 0.7);
+    /* Fluid typography for body, better contrast */
+    font-size: clamp(15px, 1.1vw, 17px);
+    color: rgba(255, 255, 255, 0.9);
     line-height: 1.5;
+    opacity: 1;
+    font-weight: 500;
 }
 
-/* ========================================= */
-/* RESPONSIVE */
-/* ========================================= */
+/* ==== CARD LABEL ==== */
+.card-label {
+    font-size: 14px;
+    font-weight: 800;
+    color: #d6d6ff;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    opacity: 0.9;
+}
+
+/* ==== CONNECTOR LINE ==== */
+.four-card-wrapper::before {
+    content: "";
+    position: absolute;
+    top: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 18px;
+    background: linear-gradient(to bottom, #7b6cff, transparent);
+    opacity: .7;
+}
+
+
+/* ++++++++++++++++++++++++++++++++++++ */
+/* RESPONSIVE FIXED (GRID BASED) */
+/* ++++++++++++++++++++++++++++++++++++++++++ */
 
 @media (max-width: 1024px) {
 
     .four-cards-container {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 40px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 50px;
         padding: 60px 30px;
+        height: auto;
         min-height: auto;
     }
 
     .four-card-wrapper {
-        flex: 1 1 220px;
-        max-width: 240px;
+        width: 100%;
+        max-width: 360px;
+        /* Bigger on tablet */
+        margin: 0 auto;
+    }
+
+    .four-card-content h4 {
+        font-size: 22px;
+    }
+
+    .four-card-content p {
+        font-size: 16px;
     }
 
 }
@@ -4409,52 +4492,60 @@ body {
 @media (max-width: 768px) {
 
     .section-four-cards {
-        padding: 60px 24px;
+        padding: 40px 20px;
         height: auto;
     }
 
     .four-cards-container {
-        flex-direction: column;
-        align-items: center;
+        grid-template-columns: 1fr;
         gap: 60px;
-        padding: 60px 24px;
+        /* More breathing room for cinematic stack */
+        padding: 20px;
     }
 
     .four-card-wrapper {
-       width: 100%;
-        max-width: 320px;
+        position: relative;
+        width: 100%;
+        max-width: 380px;
+        /* Full visual width */
     }
 
-      .four-card {
-        border-radius: 16px;
+    .four-card {
+        border-radius: 24px;
+        padding: 16px;
+        background: rgba(15, 15, 25, 0.6);
+        /* Stronger background for legibility on mobile */
     }
 
     .card-beam {
-        height: 36px;
+        height: 40px;
         margin: 16px 0;
+    }
+
+    .four-card-content {
+        margin-top: 20px;
+    }
+
+    .four-card-content h4 {
+        font-size: 24px;
+    }
+
+    .four-card-content p {
+        font-size: 17px;
+        opacity: 0.8;
     }
 }
 
 @media (max-width: 480px) {
 
-    .four-cards-container {
-        flex-direction: column;
-        align-items: center;
-        gap: 40px;
-    }
-
-    .four-card-wrapper {
-        max-width: 100%;
-        width: 100%;
-    }
-
-      .four-card-content h4 {
-        font-size: 16px;
+    .four-card-content h4 {
+        font-size: 22px;
     }
 
     .four-card-content p {
-        font-size: 13px;
+        font-size: 16px;
     }
+
 }
 
 
@@ -4480,7 +4571,7 @@ body {
     justify-content: center;
 }
 
-#pov-card-img {
+.pov-card-img {
     max-height: 100%;
     width: auto;
     display: block;
@@ -4833,7 +4924,9 @@ body {
 .section-four-cards {
     margin: 0 !important;
     padding: 0 !important;
-    height: 100vh;
+    min-height: 100vh;
+    height: auto;
+    padding-bottom: 160px;
     /* Visual height only, scroll handled by pin */
 }
 
@@ -5674,30 +5767,51 @@ body {
 }
 
 .four-card {
-    overflow: visible !important;
+    width: 320px;
+    height: 200px;
+    padding: 14px;
+    border-radius: 16px;
+    background: rgba(15, 15, 25, .35);
+    backdrop-filter: blur(6px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .four-card-img {
-    width: 110%;
-    max-width: 520px;
-    height: auto;
+    width: 100%;
+    height: 100%;
     object-fit: contain;
-    display: block;
+    filter: none !important;
 }
 
 .four-card-wrapper {
-    min-height: 480px;
-    /* Increased height */
-    overflow: visible !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 320px;
+    gap: 6px;
+    position: relative;
 }
+
 
 /* =========================================
    NEW: BEAM CONNECTOR BRANCHES
    ========================================= */
 
+
 .four-cards-container {
+    display: flex;
     position: relative;
-    /* Ensure specific positioning context */
+    width: 100%;
+    max-width: 1400px;
+    margin: auto;
+    height: 420px;
+    align-items: flex-start;
+    padding-left: 42px;
+    padding-top: 40px;
 }
 
 .beam-branches-svg {
@@ -5718,7 +5832,9 @@ body {
 }
 
 .four-card-wrapper {
-    z-index: 10;
+    position: relative;
+    width: 320px;
+    text-align: center;
 }
 
 .beam-branch {
@@ -5734,4 +5850,22 @@ body {
     will-change: stroke-dashoffset;
 }
 
-     
+
+
+/* Remove vertical beam line behind POV section */
+.section-pov-scroll .global-beam,
+.section-pov-scroll .beam-branches-svg,
+.section-pov-scroll::before,
+.section-pov-scroll::after,
+.pov-content-wrapper::before,
+.pov-content-wrapper::after {
+    display: none !important;
+    content: none !important;
+    background: none !important;
+}
+
+.global-beam,
+.beam-branches-svg {
+    z-index: 1;
+    opacity: .35;
+}
